@@ -22,7 +22,7 @@ from sportsclub import views
 from sportsclub.api import *
 
 router = DefaultRouter()
-router.register("Client", ClientsViewset, basename="Client")
+router.register("User", UsersViewset, basename="User")
 router.register("Subscription_Type", SubscriptionTypeViewset, basename="Subscription_Type")
 router.register("Client_Subscription", ClientSubscriptionViewset, basename="Client_Subscription")
 router.register("Room", RoomViewset, basename="Room")

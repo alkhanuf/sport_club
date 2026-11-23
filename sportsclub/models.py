@@ -1,21 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
-
-class Client(models.Model):
-    name = models.TextField("ФИО")
-    email = models.EmailField("Email")
-    phone_number = models.TextField("Номер телефона")
-    birth_date = models.DateField("Дата рождения")
-    date_of_registration = models.DateField("Дата регистрации", auto_now_add=True)
-    gender  = models.TextField("Пол")
-    
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Клиент"
-        verbose_name_plural = "Клиенты"
 
 class SubscriptionType(models.Model):
     name = models.TextField("Название")
@@ -33,7 +18,7 @@ class SubscriptionType(models.Model):
 
 
 class ClientSubscription(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     subscription_type = models.ForeignKey(SubscriptionType, on_delete=models.CASCADE)
     start_date = models.DateField("Дата начала")
     end_date = models.DateField("Дата окончания")
@@ -41,7 +26,7 @@ class ClientSubscription(models.Model):
     status = models.BooleanField("Статус", default=True)
 
     def __str__(self):
-        return f'{self.client} — {self.subscription_type}'
+        return f'{self.user} — {self.subscription_type}'
 
     class Meta:
         verbose_name = "Абонемент клиента"
@@ -54,11 +39,10 @@ class Room(models.Model):
     def __str__(self):
         return self.name
 
-
-
     class Meta:
         verbose_name = "Зал"
         verbose_name_plural = "Залы"
+
 
 class Trainer(models.Model):
     name = models.TextField("ФИО")
@@ -90,11 +74,11 @@ class Schedule(models.Model):
 
 
 class Booking(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.client} — {self.schedule}'
+        return f'{self.user} — {self.schedule}'
 
     class Meta:
         verbose_name = "Запись"
