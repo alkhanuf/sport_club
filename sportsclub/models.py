@@ -35,6 +35,7 @@ class ClientSubscription(models.Model):
 
 class Room(models.Model):
     name = models.TextField("Название")
+    # photo = models.ImageField()
 
     def __str__(self):
         return self.name
@@ -44,23 +45,11 @@ class Room(models.Model):
         verbose_name_plural = "Залы"
 
 
-class Trainer(models.Model):
-    name = models.TextField("ФИО")
-    phone_number = models.TextField("Номер телефона")
-    gender = models.TextField("Пол")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Тренер"
-        verbose_name_plural = "Тренеры"
-
 
 class Schedule(models.Model):
     activity = models.TextField("Мероприятие")
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
+    trainer = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField("Дата")
     time = models.TimeField("Время")
     status = models.BooleanField("Статус", default=True)

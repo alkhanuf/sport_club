@@ -26,7 +26,6 @@ router.register("User", UsersViewset, basename="User")
 router.register("Subscription_Type", SubscriptionTypeViewset, basename="Subscription_Type")
 router.register("Client_Subscription", ClientSubscriptionViewset, basename="Client_Subscription")
 router.register("Room", RoomViewset, basename="Room")
-router.register("Trainer", TrainerViewset, basename="Trainer")
 router.register("Schedule", ScheduleViewset, basename="Schedule")
 router.register("Booking", BookingViewset, basename="Booking")
 

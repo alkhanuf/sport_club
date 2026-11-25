@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from sportsclub.models import SubscriptionType, ClientSubscription, Room, Trainer, Schedule, Booking
+from sportsclub.models import SubscriptionType, ClientSubscription, Room, Schedule, Booking
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -24,12 +24,6 @@ class ClientSubscriptionSerializer(serializers.ModelSerializer):
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
-        fields = "__all__"
-
-
-class TrainerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Trainer
         fields = "__all__"
 
 

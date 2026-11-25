@@ -7,11 +7,10 @@ from sportsclub.serializers import (
     SubscriptionTypeSerializer,
     ClientSubscriptionSerializer,
     RoomSerializer,
-    TrainerSerializer,
     ScheduleSerializer,
     BookingSerializer,
 )
-from sportsclub.models import SubscriptionType, ClientSubscription, Room, Trainer, Schedule, Booking
+from sportsclub.models import SubscriptionType, ClientSubscription, Room, Schedule, Booking
 
 
 class UsersViewset(
@@ -60,18 +59,6 @@ class RoomViewset(
 ):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
-
-
-class TrainerViewset(
-    mixins.CreateModelMixin,
-    mixins.UpdateModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.DestroyModelMixin,
-    mixins.ListModelMixin,
-    GenericViewSet
-):
-    queryset = Trainer.objects.all()
-    serializer_class = TrainerSerializer
 
 
 class ScheduleViewset(

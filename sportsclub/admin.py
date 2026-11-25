@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SubscriptionType, ClientSubscription, Room, Trainer, Schedule, Booking
+from .models import SubscriptionType, ClientSubscription, Room, Schedule, Booking
 
 
 @admin.register(SubscriptionType)
@@ -15,11 +15,6 @@ class ClientSubscriptionAdmin(admin.ModelAdmin):
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
-
-
-@admin.register(Trainer)
-class TrainerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'phone_number', 'gender')
 
 
 @admin.register(Schedule)
